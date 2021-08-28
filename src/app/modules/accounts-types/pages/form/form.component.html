@@ -1,0 +1,40 @@
+<div class="row animated fadeIn fast">
+  <div class="col-xl-6 col-6">
+    <div class="card">
+      <div class="card-header" [ngClass]="{'bg-primary': !isEdit, 'bg-warning': isEdit}"> 
+        <h5 class="card-title" [ngClass]="{'text-white': !isEdit, 'text-dark': isEdit}">
+          <fa-icon *ngIf="!isEdit" [icon]="faPlus"></fa-icon>
+          <fa-icon *ngIf="isEdit" [icon]="faPen"></fa-icon>
+          {{ isEdit ? 'Editando tipo de cuenta ' + accountsType.data.attributes.name : 'Nuevo tipo de cuenta'}}
+        </h5>
+      </div>
+      <div class="card-body">     
+          
+          <form autocomplete="off" [formGroup]="accountsTypeForm" id="ngAccountsTypeForm" (ngSubmit)="submitAccountsTypeForm()">
+            <div class="row">
+              <div class="col">
+                <label for="name" class="form-label">Nombre</label>
+                <input type="text"
+                        class="form-control"
+                        formControlName="name"
+                        placeholder="Nombre"
+                        [class.is-invalid]="isInValid('name')"
+                        id="name">
+                <div class="invalid-feedback">
+                  Pro favor, ingrese un nombre de tipo
+                </div>
+              </div>
+            </div>          
+          </form>
+        </div>
+        <!-- Campo de Submit -->
+        <div class="card-footer d-flex justify-content-between">
+          <a class="btn btn-secondary btn-block mr-1"  [routerLink]="['/cuentas/tipos']">Volver</a>
+          <button type="submit" class="btn btn-success btn-md btn-block mt-0" form="ngAccountsTypeForm"><fa-icon [icon]="faSave"></fa-icon> Guardar</button>
+        </div>
+    </div>
+  </div>
+  <div class="col-6 d-flex justify-content-center align-items-center">
+      <fa-icon [icon]="faClipboardList" size="10x" class='text-secondary'></fa-icon>
+  </div>
+</div>

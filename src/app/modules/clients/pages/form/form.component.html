@@ -1,0 +1,174 @@
+<div class="row mx-auto animated fadeIn fast">
+	<div class="col-xl-6 col-6">
+		<div class="card">
+			<div class="card-header" [ngClass]="{'bg-primary': !isEdit, 'bg-warning': isEdit}">
+				<h5	class="card-title" [ngClass]="{'text-white': !isEdit, 'text-dark': isEdit}">
+					<fa-icon [icon]="faPlus"></fa-icon> {{ isEdit ? 'Editando cliente ' +
+					this.clientForm.value.first_name + ' '
+					+this.clientForm.value.last_name : 'Nuevo cliente'}}
+				</h5>
+			</div>
+			<div class="card-body">
+				<form
+					autocomplete="off"
+					[formGroup]="clientForm"
+					id="ngClientForm"
+					(ngSubmit)="submitClientForm()"
+				>
+					<div class="row">
+						<!-- Nombre -->
+						<div class="col-6">
+							<div class="mb-3">
+								<label for="first_name" class="form-label">Nombre *</label>
+								<input
+									type="text"
+									class="form-control"
+									[ngClass]="{'is-invalid': isInValid('first_name')}"
+									formControlName="first_name"
+									placeholder="Nombre"
+									id="first_name"
+								/>
+								<div class="invalid-feedback">
+									Por favor, ingresar un nombre de cliente
+								</div>
+							</div>
+						</div>
+						<div class="col-6">
+							<!-- Apellido -->
+							<div class="mb-3">
+								<label for="last_name" class="form-label">Apellido *</label>
+								<input
+									type="text"
+									class="form-control"
+									[ngClass]="{'is-invalid': isInValid('last_name')}"
+									formControlName="last_name"
+									placeholder="Apellido"
+									id="last_name"
+								/>
+								<div class="invalid-feedback">
+									Por favor, ingresar un apellido de cliente
+								</div>
+							</div>
+						</div>
+						<div class="col-6">
+							<!-- Apodo -->
+							<div class="mb-3">
+								<label for="nickname" class="form-label">Apodo </label>
+								<input
+									type="text"
+									labelForId="nickname"
+									class="form-control"
+									formControlName="nickname"
+									placeholder="Apodo"
+								/>
+							</div>
+						</div>
+						<div class="col-6">
+							<!-- Email-->
+							<div class="mb-3">
+								<label for="email" class="form-label">Email *</label>
+								<input
+									type="text"
+									labelForId="email"
+									class="form-control"
+									formControlName="email"
+									placeholder="Email"
+									[class.is-invalid]="isInValid('email')"
+								/>
+
+								<div class="invalid-feedback">Por favor, ingresar un email</div>
+							</div>
+						</div>
+						<div class="col-12">
+							<!-- Categoria -->
+							<div class="mb-3">
+								<label for="category-id" class="form-label">Categoría *</label>
+								<ng-select
+									[items]="categories.data"
+									formControlName="category_id"
+									placeholder="Seleccionar una categoría"
+									bindLabel="attributes.name"
+									bindValue="id"
+									labelForId="category-id"
+									class="custom-select"
+									[class.is-invalid]="isInValid('category_id')"
+									[class.has-value]="hasValue('category_id')"
+								>
+								</ng-select>
+								<div class="invalid-feedback">
+									Por favor, seleccionar categoría
+								</div>
+							</div>
+							<!-- Direccion -->
+							<div class="mb-3">
+								<label for="address" class="form-label">Dirección </label>
+								<input
+									type="text"
+									labelForId="address"
+									class="form-control"
+									formControlName="address"
+									placeholder="Dirección"
+								/>
+							</div>
+							<!-- Telefono -->
+							<div class="mb-3">
+								<label for="phone" class="form-label">Teléfono</label>
+								<input
+									type="text"
+									labelForId="phone"
+									class="form-control"
+									formControlName="phone"
+									placeholder="Teléfono"
+								/>
+							</div>
+							<!-- Organizacion -->
+							<div class="mb-3">
+								<label for="organization" class="form-label"
+									>Organización</label
+								>
+								<input
+									type="text"
+									labelForId="organization"
+									class="form-control"
+									formControlName="organization"
+									placeholder="Organización"
+								/>
+							</div>
+							<!-- CUIT -->
+							<div class="mb-3">
+								<label for="cuit" class="form-label">CUIT</label>
+								<input
+									type="text"
+									labelForId="cuit"
+									class="form-control"
+									formControlName="cuit"
+									placeholder="CUIT"
+								/>
+							</div>
+						</div>
+					</div>
+					<!-- /.row -->
+				</form>
+			</div>
+
+			<!-- Campo de Submit -->
+			<div class="card-footer d-flex justify-content-between">
+				<a class="btn btn-secondary btn-block mr-1" [routerLink]="['/clientes']"
+					>Volver</a
+				>
+				<button
+					type="submit"
+					class="btn btn-success btn-md btn-block mt-0"
+					form="ngClientForm"
+					[disabled]="clientForm.invalid"
+				>
+					<fa-icon [icon]="isEdit? faSave : faPlus"></fa-icon> {{isEdit?
+					'Guardar' : 'Crear'}}
+				</button>
+			</div>
+		</div>
+	</div>
+	<div class="col d-flex justify-content-center align-items-center">
+		<fa-icon [icon]="faUsers" size="10x" class="text-secondary"></fa-icon>
+	</div>
+</div>

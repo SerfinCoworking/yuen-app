@@ -1,0 +1,68 @@
+@import '_variables'
+
+:host
+  display: block
+  margin-bottom: -$footer-height
+  background-color: $sidebar-bg-color
+  position: relative
+  z-index: 10
+  .sidebar-nav
+    display: flex
+    flex-direction: column
+    width: $sidebar-full-width
+    transition: width .3s ease-out
+    a
+      display: block
+      padding: .75rem 1.5rem
+      color: #2b2929
+      text-decoration: none
+      background: 0 0
+      opacity: 1
+      transition: opacity 0.2s ease-out
+      white-space: nowrap
+      .link-text
+        opacity: 1
+        transition: opacity 0.1s ease-out
+      &:hover, &.active
+        background-color: #adb5bd
+    button.toggle-sidebar-mid-btn
+      position: absolute
+      bottom: 0
+      width: 100%
+      background-color: $custom-secundary-color
+      border: none
+      padding-right: 1.3rem
+      display: flex
+      justify-content: flex-end
+      &:hover
+        .icon-continer
+          opacity: 1
+      .icon-continer
+        font-size: 1.3rem
+        opacity: .5
+        transform: rotate(0)
+        transition: transform 0.3s ease-out, opacity 0.3s ease-out
+        color: #13161a
+
+    &.mid-width
+      width: $sidebar-mid-width
+      a
+        width: $sidebar-mid-width
+        overflow: hidden
+        &:hover
+          width: $sidebar-full-width
+          overflow: visible
+          .link-text
+            opacity: 1
+        .link-text
+          opacity: 0
+
+      button.toggle-sidebar-mid-btn
+        .icon-continer
+          transform: rotate(180deg)
+    &.hide-width
+      overflow: hidden
+      width: $sidebar-hide-width
+      position: relative
+      a
+        opacity: 0

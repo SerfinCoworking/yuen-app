@@ -1,0 +1,69 @@
+@import '_variables'
+
+:host
+  display: block
+  height: 100%
+  width: 100%
+  position: absolute
+  z-index: 10
+  background: $custom-loadgin-bg-color
+
+.spinner
+  width: $loader-size
+  height: $loader-size
+  position: absolute
+  left: 49.8%
+  top: 36%
+  transform: translateX(-50%)
+
+.svg-container
+  position: absolute
+  left: 50%
+  transform: translateX(-50%)
+  top: 36%
+  svg
+    max-height: 5rem
+    max-width: 5rem
+    // color: #ed6663
+    path
+      stroke: black
+      stroke-width: 1px!important
+      animation: bounce-logo-fill 1.7s linear 0s infinite
+
+@keyframes bounce-logo-fill
+  0%
+    fill: #ed6663
+  50%
+    fill: #eb9390
+  100%
+    fill: #ed6663
+
+.cube1, .cube2, .cube3, .cube4
+  background-color: #ed6663
+  width: 15px
+  height: 15px
+  position: absolute
+  top: 0
+  left: 0
+  animation: sk-cubemove 1.8s infinite ease-in-out
+
+.cube2
+  animation-delay: -0.9s
+
+.cube3
+  animation-delay: -1.35s
+
+.cube4
+  animation-delay: -2.25s
+
+@keyframes sk-cubemove
+  25%
+    transform: translateX($loader-size-translate) rotate(-90deg) scale(0.5)
+  50%
+    transform: translateX($loader-size-translate) translateY($loader-size-translate) rotate(-179deg)
+  50.1% 
+    transform: translateX($loader-size-translate) translateY($loader-size-translate) rotate(-180deg)
+  75%
+    transform: translateX(0px) translateY($loader-size-translate) rotate(-270deg) scale(0.5)
+  100%
+    transform: rotate(-360deg)

@@ -1,0 +1,97 @@
+<div class="row mx-auto animated fadeIn fast">
+    <div class="col-xl-6 col-12">
+        <div class="card">
+            <div class="card-header" [ngClass]="{'bg-primary': !isEdit, 'bg-warning': isEdit}">
+                <h5 class="card-title" [ngClass]="{'text-white': !isEdit, 'text-dark': isEdit}">
+                    <fa-icon *ngIf="!isEdit" [icon]="faPlus"></fa-icon>
+                    <fa-icon *ngIf="isEdit" [icon]="faPen"></fa-icon>
+                    {{ isEdit ? 'Editando cuenta ' + account.data.attributes.name : 'Nueva cuenta'}}
+                </h5>
+            </div>
+            <div class="card-body">
+                <form autocomplete="off" [formGroup]="accountForm" id="ngAccountForm" (ngSubmit)="submitAccountForm()">
+                    <div class="row">
+                        <div class="col-12">
+                            <!-- Nombre -->
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Nombre *</label>
+                                <input type="text" class="form-control" [ngClass]="{'is-invalid': isInValid('name')}"
+                                    formControlName="name" placeholder="Nombre" id="name">
+                                <div class="invalid-feedback">
+                                    Por favor, ingresar un nombre de cuenta
+                                </div>
+                            </div>
+                            <!-- Nombre -->
+                            <div class="mb-3">
+                                <label for="account_alias" class="form-label">Alias </label>
+                                <input type="text" class="form-control" [ngClass]="{'is-invalid': isInValid('account_alias')}"
+                                    formControlName="account_alias" placeholder="Alias" id="account_alias">
+                                <div class="invalid-feedback">
+                                    Por favor, ingresar un alias de cuenta
+                                </div>
+                            </div>
+                            <!-- Tipo -->
+                            <div class="mb-3">
+                                <label for="account_type_id" class="form-label">Tipo *</label>
+                                <ng-select [items]="account_types.data"
+                                           placeholder="Seleccione un tipo"
+                                           bindLabel="attributes.name"
+                                           bindValue="id"
+                                           labelForId="category-id" 
+                                           formControlName="account_type_id" 
+                                           class="custom-select"
+                                           [class.is-invalid]="isInValid('account_type_id')"
+                                           [class.has-value]="hasValue('account_type_id')">
+                                </ng-select>
+                                <div class="invalid-feedback" *ngIf="isInValid('account_type_id')">
+                                    Por favor, seleccionar un tipo
+                                </div>
+                            </div>
+
+                            <!-- CBU -->
+                            <div class="mb-3">
+                                <label for="cbu" class="form-label">CBU</label>
+                                <input type="text" class="form-control" [ngClass]="{'is-invalid': isInValid('cbu')}"
+                                    formControlName="cbu" placeholder="CBU: 12345678" id="cbu">
+                                <div class="invalid-feedback">
+                                    Por favor, ingresar un CBU de cuenta
+                                </div>
+                            </div>
+                            <!-- Descripcion -->
+                            <div class="mb-3">
+                                <label for="description" class="form-label">Descripción</label>
+                                <textarea class="form-control" id="description" formControlName="description" cols="30"
+                                    rows="5"></textarea>
+                            </div>
+
+                            <!-- Balance -->
+                            <div class="mb-3">
+                                <label for="balance" class="form-label">Balance</label>
+                                <input type="number" class="form-control" [ngClass]="{'is-invalid': isInValid('balance')}"
+                                    formControlName="balance" placeholder="balance" id="balance">
+                                <div class="invalid-feedback">
+                                    Por favor, ingresar un balance de cuenta
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- /.row -->
+                </form>
+            </div>
+
+            <!-- Campo de Submit -->
+            <div class="card-footer d-flex justify-content-between">
+                <a class="btn btn-secondary btn-block mr-1" [routerLink]="['/cuentas']">Volver</a>
+                <button type="submit" class="btn btn-success btn-md btn-block mt-0" form="ngAccountForm"
+                    [disabled]="accountForm.invalid">
+                    <fa-icon [icon]="isEdit? faSave : faPlus"></fa-icon> {{isEdit? 'Guardar' : 'Crear'}}
+                </button>
+
+            </div>
+        </div>
+    </div>
+    <div class="col d-flex justify-content-center align-items-center">
+        <fa-icon [icon]="faBoxes" size="10x" class='text-secondary'></fa-icon>
+    </div>
+</div>

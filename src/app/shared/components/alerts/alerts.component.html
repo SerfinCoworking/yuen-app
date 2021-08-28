@@ -1,0 +1,7 @@
+
+<ngb-alert [type]="alert.type" (closed)="removeAlert()" [animation]="false">
+  <div class="d-flex align-items-center">
+    <fa-icon [icon]="alert.type === 'danger' ? faBell : faCheckCircle" size="2x"></fa-icon> 
+    <strong class="ml-2">{{alert.message}}</strong> 
+  </div>
+</ngb-alert>

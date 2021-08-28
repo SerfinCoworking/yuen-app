@@ -1,0 +1,29 @@
+@import '_variables'
+
+:host
+  height: $header-height
+  width: 100%
+  background-color: $header-bg-color
+  padding: 0
+  margin: 0
+  position: fixed
+  display: flex
+  align-items: center
+  z-index: 20
+
+  .icon-container
+    width: $header-icon-cont
+  .nav-container
+    width: calc( 100% - (#{$header-icon-cont} + #{$header-menu-cont}))
+  .menu-container
+    width: $header-menu-cont
+
+  .btn-menu
+    padding: 0
+    overflow: hidden
+    fa-icon
+      pointer-events: none
+    img
+      width: 2.2125rem
+      height: 2.2125rem
+      pointer-events: none

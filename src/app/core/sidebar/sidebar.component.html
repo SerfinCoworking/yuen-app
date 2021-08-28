@@ -1,0 +1,43 @@
+<div class="sidebar-nav h-100" [ngClass]="{'mid-width': !hide && mid, 'hide-width': hide}">
+  <a [routerLink]="['/']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+    <fa-icon [icon]="faHome"></fa-icon> 
+    <span class="ml-2 link-text"> Inicio </span>
+  </a>
+  <a [routerLink]="['/usuarios']" routerLinkActive="active">
+    <fa-icon [icon]="faUser"></fa-icon> 
+    <span class="ml-2 link-text"> Usuarios </span>
+  </a>
+  <a [routerLink]="['/cuentas']" routerLinkActive="active">
+    <fa-icon [icon]="faCalculator"></fa-icon> 
+    <span class="ml-2 link-text"> Cuentas </span>
+  </a>
+  <a [routerLink]="['/compras']" routerLinkActive="active">
+    <fa-icon [icon]="faShoppingCart"></fa-icon> 
+    <span class="ml-2 link-text"> Compras </span>
+  </a>
+  <a [routerLink]="['/productos']" routerLinkActive="active" *appCan="'index:products'">
+    <fa-icon [icon]="faBoxes"></fa-icon> 
+    <span class="ml-2 link-text"> Productos </span>
+  </a>
+  <a [routerLink]="['/proveedores']" routerLinkActive="active">
+    <fa-icon [icon]="faTruck"></fa-icon> 
+    <span class="ml-2 link-text"> Proveedores </span>
+  </a>
+  <a [routerLink]="['/clientes']" routerLinkActive="active">
+    <fa-icon [icon]="faUsers"></fa-icon> 
+    <span class="ml-2 link-text"> Clientes </span>
+  </a>
+  <a [routerLink]="['/empresas']" routerLinkActive="active">
+    <fa-icon [icon]="faBuilding"></fa-icon> 
+    <span class="ml-2 link-text"> Empresas </span>
+  </a>
+  <a href="#">
+    <fa-icon [icon]="faMoneyBill"></fa-icon> 
+    <span class="ml-2 link-text"> Precios </span>
+  </a>
+  <button class="toggle-sidebar-mid-btn" (click)="toggleSidebarMid();">
+    <div class="icon-continer">
+      <fa-icon [icon]="faAngleLeft"></fa-icon>
+    </div>
+  </button>
+</div>

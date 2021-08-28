@@ -1,0 +1,26 @@
+<ng-container *ngIf="isLoggedIn$ | async; else loading">
+
+<app-header (toggleSidebarHideEvent)="sidebarHide = $event"></app-header>
+<div class="wrapper">
+  <app-sidebar [hide]="sidebarHide"></app-sidebar>
+  <div class="content w-100 position-relative">
+    <app-loading-indicator *ngIf="isLoading$ | async"></app-loading-indicator>
+
+    <div class="alerts-container">
+      <ng-container *ngFor="let alert of alerts$ | async; let i = index">
+        <app-alerts @fade [alert]="alert" [autoClose]="3500"></app-alerts>
+      </ng-container>
+    </div>
+    <div class="p-4">
+      <router-outlet></router-outlet>  
+    </div>
+    <app-watermark></app-watermark>
+  </div>
+  
+</div>
+<app-footer></app-footer>
+</ng-container>
+
+<ng-template #loading>
+  <app-loading-indicator></app-loading-indicator>
+</ng-template>

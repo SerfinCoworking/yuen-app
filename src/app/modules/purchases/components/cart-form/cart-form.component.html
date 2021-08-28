@@ -1,0 +1,66 @@
+<div class="d-flex align-items-center mb-2">
+  <form autocomplete="off"
+        [formGroup]="purchaseProductForm"
+        class="cart-form">
+    <div class="d-flex w-100">
+      <!-- Cantidad -->
+      <div class="ml-1 mr-1">
+        <input type="number"
+               class="form-control"
+               formControlName="quantity"
+               placeholder="Cantidad"
+               (focus)="formTouch()" />
+      </div>
+      <!-- Producto -->
+      <div class="ml-1 mr-1 w-50">
+        <ng-select [items]="products.data"
+                   formControlName="product_id"
+                   placeholder="Seleccione un producto"
+                   bindLabel="attributes.name"
+                   bindValue="id"
+                   class="custom-select"
+                   (focus)="formTouch()">
+        </ng-select>
+      </div>
+      <!-- Costo -->
+      <div class="ml-1 mr-1">
+        <input type="number"
+               class="form-control"
+               formControlName="cost_price"
+               placeholder="Precio de costo"
+               (focus)="formTouch()" />
+      </div>
+      <!-- Presentacion -->
+      <div class="ml-1 mr-1">
+        <input type="text"
+               class="form-control"
+               formControlName="presentation"
+               placeholder="Presentación"
+               (focus)="formTouch()" />
+      </div>
+      <!-- Fecha vencimiento -->
+      <div class="ml-1 mr-1">
+        <div class="input-group">
+          <input class="form-control"
+                 placeholder="dd/mm/aaaa"
+                 formControlName="expiry_date"
+                 ngbDatepicker
+                 #d2="ngbDatepicker"
+                 [positionTarget]="pop1"
+                 (focus)="formTouch()" />
+          <div class="input-group-append">
+            <button class="btn btn-outline-info calendar"
+                    (click)="d2.toggle(); formTouch()"
+                    type="button"
+                    #pop1>
+              <fa-icon [icon]="faCalendarAlt"></fa-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  <button type="button" class="btn btn-danger btn-xs ml-2" *ngIf="!lastInsert">
+    <fa-icon [icon]="faTrashAlt"></fa-icon>
+  </button>
+</div>

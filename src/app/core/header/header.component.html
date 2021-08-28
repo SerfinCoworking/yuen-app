@@ -1,0 +1,26 @@
+
+<div class="icon-container pl-4 pr-4 d-flex align-items-center justify-content-between h-100">
+  <a href="#">Logo</a>
+  <button class="btn btn-outline-primary toggle-sidebar" (click)="$event.stopPropagation(); toggleSidebarHide()">
+    <fa-icon [icon]="faBars"></fa-icon>
+  </button>
+</div>
+
+<div class="nav-container pl-3 pr-3">
+  <router-outlet name="header-top"></router-outlet>
+ </div>
+<div class="menu-container pl-4 pr-4 d-flex align-items-center justify-content-between h-100">
+  
+  <fa-icon [icon]="faBell"></fa-icon>
+
+  <div class="btn-group">
+    <button type="button" class="btn btn-outline-primary rounded-circle btn-menu" data-toggle="dropdown" aria-haspopup="true" (click)="toggleMenu()" #toggleButton>
+      <fa-icon [icon]="faUser" *ngIf="!profile?.picture"></fa-icon>
+
+      <img *ngIf="profile?.picture" [src]="profile.picture" alt="">
+    </button>
+    <div class="dropdown-menu dropdown-menu-right" [ngClass]="{'show': userBtnDropdownShow}" (clickOutside)="hideMenu($event)">
+      <button class="dropdown-item" type="button" (click)="logout()">Salir</button>
+    </div>
+  </div>  
+</div>

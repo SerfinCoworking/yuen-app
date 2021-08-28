@@ -1,0 +1,91 @@
+<div class="row mx-auto animated fadeIn fast">
+	<div class="col-6">
+		<div class="card">
+			<div class="card-header">
+				<h5 class="car-title">
+					<fa-icon [icon]="faEye"></fa-icon>
+					Viendo proveedor {{provider.data.attributes.name}}
+				</h5>
+			</div>
+			<div class="card-body">
+				<div class="row">
+					<!-- Campo de Id -->
+					<div class="col-12">
+						<h5><strong>Id:</strong></h5>
+						<label class="col-form-label text-dark">{{provider.data.id}}</label>
+					</div>
+					<div class="col-12">
+						<h5><strong>Nombre de empresa:</strong></h5>
+						<label class="col-form-label text-dark"
+							>{{provider.data.attributes.company.name}}</label
+						>
+					</div>
+					<!-- Campo de Nombre -->
+					<div class="col-12">
+						<h5><strong>Nombre:</strong></h5>
+						<label class="col-form-label text-dark"
+							>{{provider.data.attributes.name}}</label
+						>
+					</div>
+					<div class="col-12">
+						<h5><strong>Categoria:</strong></h5>
+						<label class="col-form-label text-dark"
+							>{{provider.data.attributes.category.name}}</label
+						>
+					</div>
+					<div class="col-12">
+						<h5><strong>Email:</strong></h5>
+						<label class="col-form-label text-dark"
+							>{{provider.data.attributes.email}}</label
+						>
+					</div>
+					<div class="col-12">
+						<h5><strong>Pagina web:</strong></h5>
+						<label class="col-form-label text-dark"
+							>{{provider.data.attributes.webpage}}</label
+						>
+					</div>
+					<div class="col-12">
+						<h5><strong>Direccion:</strong></h5>
+						<label class="col-form-label text-dark"
+							>{{provider.data.attributes.address}}</label
+						>
+					</div>
+					<div class="col-12">
+						<h5><strong>Telefono:</strong></h5>
+						<label class="col-form-label text-dark"
+							>{{provider.data.attributes.phone}}</label
+						>
+					</div>
+					<div class="col-12">
+						<h5><strong>CUIT:</strong></h5>
+						<label class="col-form-label text-dark"
+							>{{provider.data.attributes.cuit}}</label
+						>
+					</div>
+				</div>
+
+				<!-- Campo de Submit -->
+				<div class="card-footer d-flex justify-content-between">
+					<a
+						class="btn btn-secondary btn-block mr-1"
+						[routerLink]="['/proveedores']"
+						>Volver</a
+					>
+					<a
+						class="btn btn-warning btn-block mr-1 mt-0"
+						[routerLink]="[editRoute]"
+						placement="top"
+						ngbTooltip="Editar"
+					>
+						<fa-icon [icon]="faPen"></fa-icon>
+						Editar
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-6 d-flex justify-content-center align-items-center">
+			<!-- <fa-icon [icon]="faCalculator" size="10x" class='text-secondary'></fa-icon> -->
+		</div>
+	</div>
+</div>

@@ -1,0 +1,30 @@
+<div class="card animated fadeIn">
+	<div class="card-header d-flex justify-content-between align-items-center">
+		<h5 class="mb-0">Empresas</h5>
+	</div>
+	<div class="card-body">
+		<table class="table table-striped table-hover">
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Nombre</th>
+					<th scope="col">Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let item of companies.data" [attr.id]="item.id">
+					<td>{{ item.id }}</td>
+					<td>{{ item.attributes.name }}</td>
+					<td>
+						<app-action-buttons [routePrefix]="'empresas'"
+																[id]="item.id"
+																[detroyModalContent]="item.attributes.name"
+																(deleteConfirm)="delete($event)"
+						></app-action-buttons>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="card-footer"></div>
+</div>

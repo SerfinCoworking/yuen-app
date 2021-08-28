@@ -1,0 +1,57 @@
+<div class="row mx-auto animated fadeIn fast">
+	<div class="col-6">
+		<div class="card">
+			<div class="card-header">
+				<h5 class="car-title">
+					<fa-icon [icon]="this.faEye"></fa-icon>
+					Viendo categoria de proveedor
+				</h5>
+			</div>
+			<div class="card-body">
+				<div class="row">
+					<div class="col-12">
+						<h5><strong>Pertence a Empresa:</strong></h5>
+						<label class="col-form-label text-dark"
+							>{{providersCategory.data.attributes.company.name}}</label
+						>
+					</div>
+					<!-- Campo de Nombre -->
+					<div class="col-12">
+						<h5><strong>Nombre:</strong></h5>
+						<label class="col-form-label text-dark"
+							>{{providersCategory.data.attributes.name}}</label
+						>
+					</div>
+					<!-- Campo de Descripcion -->
+					<div class="col-12">
+						<h5><strong>Descripcion:</strong></h5>
+						<label class="col-form-label text-dark"
+							>{{providersCategory.data.attributes.description}}</label
+						>
+					</div>
+				</div>
+
+				<!-- Campo de Submit -->
+				<div class="card-footer d-flex justify-content-between">
+					<a
+						class="btn btn-secondary btn-block mr-1"
+						[routerLink]="['/proveedores']"
+						>Volver</a
+					>
+					<a
+						class="btn btn-warning btn-block mr-1 mt-0"
+						[routerLink]="[editRoute]"
+						placement="top"
+						ngbTooltip="Editar"
+					>
+						<fa-icon [icon]="faPen"></fa-icon>
+						Editar
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-6 d-flex justify-content-center align-items-center">
+			<!-- <fa-icon [icon]="faCalculator" size="10x" class='text-secondary'></fa-icon> -->
+		</div>
+	</div>
+</div>
