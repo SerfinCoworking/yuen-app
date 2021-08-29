@@ -2,10 +2,10 @@
 
 <app-header (toggleSidebarHideEvent)="sidebarHide = $event"></app-header>
 <div class="wrapper">
-  <app-sidebar [hide]="sidebarHide"></app-sidebar>
   <div class="content w-100 position-relative">
     <app-loading-indicator *ngIf="isLoading$ | async"></app-loading-indicator>
 
+    <!-- Alerts -->
     <div class="alerts-container">
       <ng-container *ngFor="let alert of alerts$ | async; let i = index">
         <app-alerts @fade [alert]="alert" [autoClose]="3500"></app-alerts>
